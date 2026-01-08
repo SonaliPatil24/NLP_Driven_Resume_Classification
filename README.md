@@ -4,7 +4,7 @@
 
 Recruiters receive large volumes of resumes for multiple job roles. Manually screening and categorizing these resumes is time-consuming, inconsistent, and prone to bias. This project aims to automate resume categorization based on resume text using classical natural language processing and machine learning techniques.
 
-**  Methodology**
+**Methodology**
 
 1.The project follows a structured data science workflow.
 2.Data Cleaning and Preprocessing
@@ -30,17 +30,17 @@ EDA revealed that the dataset contains noisy and overlapping categories, which d
 3.Limited vocabulary size to reduce sparsity and noise
 TF-IDF was selected for its simplicity, interpretability, and strong baseline performance in text classification tasks.
 
-** Model Experiments**
+**Model Experiments**
 1.Multiple machine learning models were evaluated and compared.
 Increasing model complexity did not improve performance. This indicates that data quality and category overlap, rather than algorithm selection, is the primary limiting factor.
 
-** Final Model Selection**
+**Final Model Selection**
 Linear Support Vector Machine was selected as the final model because:
 1.It consistently outperformed other models
 2.It generalized better on noisy and overlapping text data
 3.It is commonly used in real-world NLP and resume screening systems
 
-    **Error Analysis**
+   **Error Analysis**
 
 Error analysis revealed that most misclassifications occurred between closely related roles. For example, resumes belonging to DevOps Engineers were sometimes classified as Automation Testing. These errors reflect real-world role overlap rather than model instability, indicating that the model makes logical mistakes.
 
