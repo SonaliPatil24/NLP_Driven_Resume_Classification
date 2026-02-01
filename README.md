@@ -1,53 +1,77 @@
-# NLP_Driven_Resume_Classification
+# NLP-Driven Resume Classification
 
-**Problem Statement**
+## Problem Statement
+Recruiters receive large volumes of resumes for multiple job roles. Manually screening and categorizing these resumes is time-consuming, inconsistent, and prone to bias.  
+This project aims to **automate resume categorization** based on resume text using classical **Natural Language Processing (NLP)** and **Machine Learning (ML)** techniques.
 
-Recruiters receive large volumes of resumes for multiple job roles. Manually screening and categorizing these resumes is time-consuming, inconsistent, and prone to bias. This project aims to automate resume categorization based on resume text using classical natural language processing and machine learning techniques.
+---
 
-**Methodology**
+## Methodology
 
-1.The project follows a structured data science workflow.
-2.Data Cleaning and Preprocessing
+The project follows a structured data science workflow:
 
-The following preprocessing steps were applied to standardize resume text:
-1.Removed URLs, punctuation, numbers, and extra whitespaces
-2.Converted text to lowercase
-3.Removed stopwords
+### 1. Data Cleaning and Preprocessing
+To standardize resume text, the following steps were applied:
+- Removed URLs, punctuation, numbers, and extra whitespaces
+- Converted text to lowercase
+- Removed stopwords
 
+### 2. Exploratory Data Analysis (EDA)
+EDA was conducted to understand dataset characteristics:
+- Analyzed class distribution across job categories
+- Studied variability in resume length
 
+**Insights:** The dataset contains noisy and overlapping categories, which directly impacts achievable model performance.
 
-  **Exploratory Data Analysis**
+### 3. Feature Engineering
+- Converted text data into numerical features using **TF-IDF vectorization**
+- Used **unigram and bigram representations**
+- Limited vocabulary size to reduce sparsity and noise
 
-Exploratory data analysis was conducted to understand the dataset characteristics:
-1.Analyzed class distribution across job categories
-2.Studied variability in resume length
-EDA revealed that the dataset contains noisy and overlapping categories, which directly impacts achievable model performance.
+> TF-IDF was selected for its simplicity, interpretability, and strong baseline performance in text classification tasks.
 
-  **Feature Engineering**
+### 4. Model Experiments
+- Multiple machine learning models were evaluated and compared
+- Increasing model complexity did **not improve performance**, indicating that **data quality and category overlap** are the primary limiting factors
 
-1.Text data was converted into numerical features using TF-IDF vectorization.
-2.Used unigram and bigram representations
-3.Limited vocabulary size to reduce sparsity and noise
-TF-IDF was selected for its simplicity, interpretability, and strong baseline performance in text classification tasks.
+### 5. Final Model Selection
+**Linear Support Vector Machine (LinearSVC)** was chosen as the final model because:
+- Consistently outperformed other models
+- Generalized better on noisy and overlapping text data
+- Commonly used in real-world NLP and resume screening systems
 
-**Model Experiments**
-1.Multiple machine learning models were evaluated and compared.
-Increasing model complexity did not improve performance. This indicates that data quality and category overlap, rather than algorithm selection, is the primary limiting factor.
+### 6. Error Analysis
+- Most misclassifications occurred between **closely related roles**  
+  e.g., DevOps Engineer resumes sometimes classified as Automation Testing  
+- Reflects real-world role overlap rather than model instability  
+- Indicates the model makes **logical and interpretable mistakes**
 
-**Final Model Selection**
-Linear Support Vector Machine was selected as the final model because:
-1.It consistently outperformed other models
-2.It generalized better on noisy and overlapping text data
-3.It is commonly used in real-world NLP and resume screening systems
+### 7. Deployment
+- A **Streamlit web application** was developed for end-to-end demonstration
+- Users can input resume text and receive **real-time job category predictions**
+- Simulates a practical **automated resume screening workflow**
 
-   **Error Analysis**
+---
 
-Error analysis revealed that most misclassifications occurred between closely related roles. For example, resumes belonging to DevOps Engineers were sometimes classified as Automation Testing. These errors reflect real-world role overlap rather than model instability, indicating that the model makes logical mistakes.
+## Project Summary
+This project demonstrates a **complete NLP pipeline for resume categorization**, combining:
+- Careful **data preprocessing**
+- Interpretable **feature engineering**
+- Systematic **model evaluation**
+- Practical **deployment** for real-world use
 
-  **Deployment**
+---
 
-A Streamlit web application was developed to demonstrate end-to-end usability. The application allows users to input resume text and receive real-time job category predictions, simulating an automated resume screening workflow.
+## Tools & Technologies
+- **Programming Language:** Python  
+- **Libraries:** Pandas, NumPy, scikit-learn, NLTK, Streamlit  
+- **Machine Learning Models:** LinearSVC, Random Forest, Logistic Regression (for comparison)  
+- **Deployment:** Streamlit web app
 
-  **Project Summary**
+---
 
-This project demonstrates a complete natural language processing pipeline for resume categorization, combining careful data preprocessing, interpretable feature engineering, systematic model evaluation, and practical deployment.
+## Usage
+1. Clone the repository
+2. Install required packages:
+```bash
+pip install -r requirements.txt
